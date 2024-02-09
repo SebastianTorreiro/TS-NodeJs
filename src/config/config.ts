@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv";
+import { ConnectionOptionsReader, DataSource } from "typeorm";
 
 export abstract class ConfigServer {
     constructor() {
@@ -27,6 +28,14 @@ export abstract class ConfigServer {
             arrEnv.unshift(...stringToArray)
         }
         return '.' + arrEnv.join('.')
+    }
+
+
+    public get typeORMConfig(): DataSource {
+        return new DataSource({
+            type: "mysql",
+
+        })
     }
 
 }
